@@ -7,6 +7,9 @@
       fixed
       app
     >
+      <v-app-bar>
+          <v-app-bar-nav-icon @click.stop="miniVariant = !miniVariant" />
+      </v-app-bar>
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -27,58 +30,20 @@
     <v-app-bar
       :clipped-left="clipped"
       fixed
+      flat
       app
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
+      <v-toolbar-title v-text="title" class="headline font-weight-bold"/>
       <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
+
     </v-app-bar>
+
     <v-main>
       <v-container>
         <nuxt />
       </v-container>
     </v-main>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+    
     <v-footer
       :absolute="!fixed"
       app
@@ -90,16 +55,26 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       clipped: false,
-      drawer: false,
-      fixed: false,
+      drawer: true,
+      fixed: true,
       items: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
+          icon: 'mdi-view-dashboard',
+          title: 'Dashboard',
+          to: '/dashboard'
+        },
+        {
+          icon: 'mdi-package',
+          title: 'Stock',
+          to: '/stocksmgmt'
+        },
+        {
+          icon: 'mdi-account',
+          title: 'User',
+          to: '/usersmgmt'
         },
         {
           icon: 'mdi-chart-bubble',
@@ -107,11 +82,16 @@ export default {
           to: '/inspire'
         }
       ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+      miniVariant: true,
+      title: 'Inventory System'
     }
+  },
+  created(){
+    this.$vuetify.theme.dark = false;
   }
 }
 </script>
+
+<style scoped>
+  
+</style>
