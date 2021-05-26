@@ -8,7 +8,7 @@
       app
     >
       <v-app-bar>
-          <v-app-bar-nav-icon @click.stop="miniVariant = !miniVariant" />
+        <v-app-bar-nav-icon @click.stop="miniVariant = !miniVariant" />
       </v-app-bar>
       <v-list>
         <v-list-item
@@ -18,24 +18,23 @@
           router
           exact
         >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
+          <v-tooltip right>
+            <template v-slot:activator="{ on, attrs }">
+              <v-list-item-action v-bind="attrs" v-on="on">
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title v-text="item.title" />
+              </v-list-item-content>
+            </template>
+            <span>{{ item.title }}</span>
+          </v-tooltip>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      flat
-      app
-    >
-      <v-toolbar-title v-text="title" class="headline font-weight-bold"/>
+    <v-app-bar :clipped-left="clipped" fixed flat app>
+      <v-toolbar-title v-text="title" class="headline font-weight-bold" />
       <v-spacer />
-
     </v-app-bar>
 
     <v-main>
@@ -43,11 +42,8 @@
         <nuxt />
       </v-container>
     </v-main>
-    
-    <v-footer
-      :absolute="!fixed"
-      app
-    >
+
+    <v-footer :absolute="!fixed" app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
@@ -62,36 +58,35 @@ export default {
       fixed: true,
       items: [
         {
-          icon: 'mdi-view-dashboard',
-          title: 'Dashboard',
-          to: '/dashboard'
+          icon: "mdi-view-dashboard",
+          title: "Dashboard",
+          to: "/dashboard",
         },
         {
-          icon: 'mdi-package',
-          title: 'Stock',
-          to: '/stocksmgmt'
+          icon: "mdi-package",
+          title: "Stock",
+          to: "/stocksmgmt",
         },
         {
-          icon: 'mdi-account',
-          title: 'User',
-          to: '/usersmgmt'
+          icon: "mdi-account",
+          title: "User",
+          to: "/usersmgmt",
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
+          icon: "mdi-chart-bubble",
+          title: "Inspire",
+          to: "/inspire",
+        },
       ],
       miniVariant: true,
-      title: 'Inventory System'
-    }
+      title: "Inventory System",
+    };
   },
-  created(){
+  created() {
     this.$vuetify.theme.dark = false;
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
-  
 </style>

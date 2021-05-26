@@ -1,0 +1,20 @@
+<template>
+  <v-app>
+    <v-main>
+      <v-container>
+        <nuxt />
+      </v-container>
+    </v-main>
+  </v-app>
+</template>
+
+<script>
+export default {
+  created() {
+    this.$vuetify.theme.dark = false;
+  },
+};
+</script>
+
+<style scoped>
+</style>

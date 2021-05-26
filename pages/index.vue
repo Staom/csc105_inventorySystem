@@ -84,9 +84,6 @@ export default {
   components: {
     Logo,
     VuetifyLogo
-  },
-  created(){
-    this.$vuetify.theme.dark = false;
   }
 }
 </script>
