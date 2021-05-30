@@ -25,7 +25,10 @@ export default {
     css: [],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-    plugins: [],
+    plugins: [
+        "~/plugins/vue-sweetalert2.js",
+        "~/plugins/vue-mask.js",
+    ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components
     components: true,
@@ -34,43 +37,46 @@ export default {
     buildModules: [
         // https://go.nuxtjs.dev/vuetify
         '@nuxtjs/vuetify',
+        '@nuxtjs/moment',
     ],
 
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
         // https://go.nuxtjs.dev/axios
         '@nuxtjs/axios',
-        '@nuxtjs/auth-next'
+        // '@nuxtjs/auth-next'
     ],
     auth: {
-        redirect: {
-            login: '/login',
-            // logout: '/',
-            // callback: '/login',
-            // home: '/'
-        },
-        strategies: {
-            local: {
-                token: {
-                    property: 'token',
-                    // required: true,
-                    // type: 'Bearer'
-                },
-                user: {
-                    property: 'user',
-                    // autoFetch: true
-                },
-                endpoints: {
-                    login: { url: 'localhost:8080/api/authen/login', method: 'post' },
-                    logout: { url: '/api/auth/logout', method: 'post' },
-                    user: { url: 'localhost:8080/api/account/', method: 'get' }
-                }
-            }
-        }
+        // redirect: {
+        //     login: '/login',
+        //     // logout: '/',
+        //     // callback: '/login',
+        //     // home: '/'
+        // },
+        // strategies: {
+        //     local: {
+        //         token: {
+        //             property: 'token',
+        //             // required: true,
+        //             // type: 'Bearer'
+        //         },
+        //         user: {
+        //             property: 'user',
+        //             // autoFetch: true
+        //         },
+        //         endpoints: {
+        //             login: { url: 'localhost:8080/api/authen/login', method: 'post' },
+        //             logout: { url: '/api/auth/logout', method: 'post' },
+        //             user: { url: 'localhost:8080/api/account/', method: 'get' }
+        //         }
+        //     }
+        // }
     },
 
     // Axios module configuration: https://go.nuxtjs.dev/config-axios
-    axios: {},
+    axios: {
+        baseURL: "http://localhost:8080/api"
+    },
 
     // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
     vuetify: {

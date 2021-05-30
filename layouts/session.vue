@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-main>
-      <v-container>
+      <v-container fill-height class="justify-center">
         <nuxt />
       </v-container>
     </v-main>
@@ -11,7 +11,7 @@
 <script>
 export default {
   created() {
-    this.$vuetify.theme.dark = false;
+    this.$vuetify.theme.dark = true;
   },
 };
 </script>
