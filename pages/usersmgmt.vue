@@ -116,6 +116,28 @@
                   </v-col>
                   <v-col
                     cols="12"
+                    sm="6"
+                    md="4"
+                  >
+                    <v-text-field
+                      v-model="editedItem.username"
+                      label="Username"
+                      required
+                    ></v-text-field>
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    sm="6"
+                    md="4"
+                  >
+                    <v-text-field
+                      v-model="editedItem.password"
+                      label="Password"
+                      required
+                    ></v-text-field>
+                  </v-col>
+                  <v-col
+                    cols="12"
                     sm="4"
                     md="4"
                   >
@@ -202,6 +224,8 @@
         { text: 'Gender', value: 'gender' },
         { text: 'Email', value: 'email' },
         { text: 'Tel', value: 'tel' },
+        { text: 'Username', value: 'username'},
+        { text: 'Password', value: 'password'},
         { text: 'Role', value: 'role' },
         { text: 'Actions', value: 'actions', sortable: false },
       ],
@@ -214,6 +238,8 @@
             "gender": "",
             "email": "",
             "tel": "",
+            "username": "",
+            "password": "",
       },
       defaultItem: {
         "role": "",
@@ -223,12 +249,14 @@
             "gender": "",
             "email": "",
             "tel": "",
+            "username": "",
+            "password": "",
       },
     }),
 
     computed: {
       formTitle () {
-        return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
+        return this.editedIndex === -1 ? 'New User' : 'Edit User'
       },
       ...mapFields(["accounts","auth","header"])
     },

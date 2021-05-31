@@ -74,6 +74,8 @@ const createStore = () => new Vuex.Store({
             "gender": "Male",
             "email": "sirawit.cssit@mail.kmutt.ac.th",
             "tel": "098-378-2018",
+            "username": "sirawit",
+            "password": "123456",
         }]
     },
     getters: {
